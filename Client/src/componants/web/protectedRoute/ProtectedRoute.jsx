@@ -1,0 +1,13 @@
+import React from 'react'
+import { Navigate } from 'react-router-dom'
+import Cookies from 'universal-cookie';
+
+const cookies = new Cookies();
+
+export default function ProtectedRoute({children}) {
+
+    if(!cookies.get('userToken')){
+        return <Navigate to='/login'/>
+    }
+  return children
+}
